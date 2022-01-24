@@ -42,7 +42,11 @@ class StartFragment : Fragment() {
             var readmorefrag = ReadmoreFragment()
             readmorefrag.thenumber = thecounter
 
-            requireActivity().supportFragmentManager.beginTransaction().add(R.id.fragContainer, readmorefrag).addToBackStack(null).commit()
+            var fragTransact = requireActivity().supportFragmentManager.beginTransaction()
+            fragTransact.setCustomAnimations(R.anim.slide_in, R.anim.slide_out)
+            fragTransact.add(R.id.fragContainer, readmorefrag)
+            fragTransact.addToBackStack(null)
+            fragTransact.commit()
         }
     }
 }
